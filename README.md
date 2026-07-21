@@ -29,7 +29,7 @@ To run this project locally, you will need **Node.js** installed for the fronten
 
 ### 1. Clone the Repository
 ```bash
-git clone <your-github-repo-url>
+git clone https://github.com/jarvisified/ZeroClick-Predictive-E-Commerce-Engine.git
 cd zero-click-engine
 ```
 
