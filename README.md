@@ -23,6 +23,25 @@ This project was built to simulate the scalability, memory management, and perfo
 * **Backend:** C++17, `cpp-httplib` (REST API), `nlohmann/json` (Data Parsing)
 * **Algorithms:** Weighted Moving Averages, Max-Heaps, Hash Maps
 
+## 📂 Repository Structure
+
+If you are reviewing this repository on GitHub, here is how the files are organized:
+
+```text
+zero-click-engine/
+├── backend/
+│   ├── api_server_phase4.cpp       # Main C++ REST API Server (Handles WMA & Heap Logic)
+│   ├── data_gen.cpp         # C++ script to generate the 10,000 user mock database
+│   ├── httplib.h            # Header-only C++ HTTP library (Dependency)
+│   └── json.hpp             # Header-only C++ JSON library (Dependency)
+└── zero-click-ui/           # React + Vite Frontend
+    ├── src/
+    │   ├── App.jsx          # Master React file (UI, State, and Gesture Logic)
+    │   └── index.css        # Tailwind CSS initialization
+    ├── vite.config.js       # Vite & Tailwind v4 Configuration
+    └── package.json         # Node dependencies
+```
+
 ## ⚙️ Getting Started & Installation
 
 To run this project locally, you will need **Node.js** installed for the frontend, and a **C++ Compiler** (like MinGW/GCC) for the backend.
@@ -32,7 +51,6 @@ To run this project locally, you will need **Node.js** installed for the fronten
 git clone https://github.com/jarvisified/ZeroClick-Predictive-E-Commerce-Engine.git
 cd zero-click-engine
 ```
-
 ### 2. Generate the Mock Database
 Navigate to the `backend` folder and compile the Data Generator to build your 10,000 users.
 ```bash
@@ -49,13 +67,21 @@ g++ api_server.cpp -o server.exe -lws2_32
 ```
 *(The C++ backend is now live and listening on `http://localhost:8080`).*
 
-### 4. Set Up the React Frontend
-Open a **new terminal window** and navigate to the `frontend` folder.
+### 4. Set Up the React Frontend (`zero-click-ui`)
+
+**If you are cloning this repository:**
+Open a **new terminal window**, navigate to the frontend folder, and start the Vite dev server.
 ```bash
+cd zero-click-ui
 npm install
 npm run dev
 ```
 *(The frontend is now live on `http://localhost:5173`).*
+
+**For developers reviewing the architecture:**
+* **Initialization:** This frontend was scaffolded using Vite (`npm create vite@latest zero-click-ui -- --template react`).
+* **Tailwind v4 Setup:** The styling utilizes the latest Tailwind CSS Vite plugin. You will notice custom configurations in `vite.config.js` and a single `@import "tailwindcss";` in `src/index.css`.
+* **Core Logic Location:** The entirety of the React logic—including the C++ fetch requests, Race-Condition cleanup (`ignore` flags), Optimistic UI updates, and the custom Swipe-to-Cancel gesture—is consolidated strictly inside `zero-click-ui/src/App.jsx` for easy code review.
 
 ## 🎮 How to Use the Application
 1. **Switch Profiles:** Use the dropdown in the top right to switch between 50 dynamically generated user personas. Watch the UI fetch their unique C++ AI forecast instantly.
